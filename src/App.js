@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import Formulario from './components/Formulario';
 import Resumen from './components/Resumen';
 import Resultado from './components/Resultado';
+import Spinner from './components/Spinner'
+
 
 
 
@@ -29,6 +31,8 @@ const [resumen, guardarResumen]= useState({
   }
 });
 
+const [cargando, guardarCargando]=useState(false);
+
 const {cotizacion,datos}= resumen;
 
   return (
@@ -39,13 +43,19 @@ const {cotizacion,datos}= resumen;
     <ContenedorFormulario>
     <Formulario
     guardarResumen={guardarResumen}
+    guardarCargando={guardarCargando}
     />
+    {cargando?<Spinner/>: null}
     <Resumen
     datos={datos}
     />
+    {!cargando
+    ?
     <Resultado
     cotizacion={cotizacion}
     />
+    : null
+  }
     </ContenedorFormulario>
     </Contenedor>
 

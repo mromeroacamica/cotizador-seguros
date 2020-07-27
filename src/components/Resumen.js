@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
+
 
 const ContenedorResumen = styled.div`
 padding: 1rem;
@@ -29,6 +31,9 @@ const Resumen = ({ datos }) => {
             </ContenedorResumen>
         </Fragment>
     );
+}
+Resumen.prototype={
+    datos:PropTypes.object.isRequired
 }
 
 export default Resumen;
